@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Spotify Songs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <h1>Your Top 10 Spotify Songs</h1>
+    <div class="user-info">
+        <img src="{{user_profile_img}}" alt="Profile Image" class="profile-img">
+        <div class="user-details">
+            <p class="display-name">{{user_display_name}}</p>
+            <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="song-list">
+            {% for x in range(10) %}
+            <li class="song-item">
+                <img src="{{cover_images[x]}}" alt="Album Cover" class="album-cover">
+                <div class="song-details">
+                    <h2 class="song-title">{{song_title[x]}}</h2>
+                    <p class="artist">{{song_artist[x]}}</p>
+                </div>
+                <div class="popularity-div">
+                    <p class="popularity">{{song_popularity[x]}}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
